@@ -44,3 +44,11 @@
 .copy-img{
     cursor: pointer;
 }
+.link-card{
+    background-color: #fff;
+    padding: 5px 10px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px lightblue;
+    color: black;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios'
 import copyImg from './copy.png'
@@ -7,6 +7,7 @@ function App() {
   const [url, setUrl] = useState('')
   const [slug, setSlug] = useState('')
   const [shortUrl, setShortUrl] = useState('')
+  const [links, setLinks] = useState([])
 
   const generateLink = async () => {
     const response = await axios.post('/link', {
@@ -20,6 +21,15 @@ function App() {
     navigator.clipboard.writeText(shortUrl);
     alert('Copied to clipboard!')
   }
+
+  const loadLinks = async () => {
+    const response = await axios.get('/api/links');
+    setLinks(response?.data?.data)
+  }
+
+  useEffect(() => {
+    loadLinks();
+  }, [])
 
   return (
     <div>
@@ -71,8 +81,22 @@ function App() {
             Do Magic✨
           </button>
         </div>
+
         <div>
           <h2>All Links</h2>
+          {
+            links?.map((linksObj, index)=>{
+              const {url, slug, clicks} = linksObj;
+
+              return(
+                <div className='link-card'>
+                  <p>URL: {url}</p>
+                  <p>Slug: {process.env.REACT_APP_BASE_URL}/{slug}</p>
+                  <p>Clicks: {clicks}</p>
+                  </div>
+              )
+            })
+          }
         </div>
       </div>
     </div>
