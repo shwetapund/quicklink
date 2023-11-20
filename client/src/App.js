@@ -82,8 +82,8 @@ function App() {
           </button>
         </div>
 
-        <div>
-          <h2>All Links</h2>
+        <div className='all-links-container'>
+     
           {
             links?.map((linksObj, index)=>{
               const {url, slug, clicks} = linksObj;
