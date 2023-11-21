@@ -37,7 +37,7 @@ function App() {
 
       <div className='app-container'>
         <div className='link-generation-card'>
-          <h2>Link Generation</h2>
+          <h2 className='text-center'>Shortest URL</h2>
 
           <input type='text'
             placeholder='URL'
@@ -90,9 +90,24 @@ function App() {
 
               return(
                 <div className='link-card'>
-                  <p>URL: {url}</p>
-                  <p>Slug: {process.env.REACT_APP_BASE_URL}/{slug}</p>
-                  <p>Clicks: {clicks}</p>
+                  <p>
+                    <span className='link-text'>
+                      URL : </span>
+                    <span className='text-url'> {url}</span>
+                  </p>
+                  <p>
+                    <span className='link-text'>
+                      Slug : </span>   
+
+                       <span className='text-url'> 
+                       {process.env.REACT_APP_BASE_URL}/{slug}
+                    
+                    </span>
+                   
+                  </p>
+                  <p>
+                    <span className='link-text'>Clicks : </span>
+                    <span className='text-url'>{clicks}</span></p>
                   </div>
               )
             })

@@ -63,8 +63,6 @@ app.get('/:slug',async (req,res)=>{
     await Link.updateOne({slug: slug}, {$set: {clicks: link.clicks +1
     }})
     
-
-   
     res.redirect(link.url);
 })
 
