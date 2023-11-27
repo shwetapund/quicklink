@@ -68,6 +68,7 @@
 .all-links-container{
     height: 72vh;
     overflow-y: scroll;
+    width: 500px;
     -ms-overflow-style: none;
     scrollbar-width: 1px;
 }
